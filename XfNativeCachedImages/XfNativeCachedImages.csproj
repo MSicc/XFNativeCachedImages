@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,5 +16,18 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="Resources\MSicc_Logo_Base_Blue_1024px_pad25.png" />
+    <EmbeddedResource Include="ImageUrls.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\materialdesignicons-webfont.ttf" />
+    <None Remove="Resources\MSicc_Logo_Base_Blue_1024px_pad25.png" />
+    <None Remove="ImageUrls.json" />
   </ItemGroup>
 </Project>

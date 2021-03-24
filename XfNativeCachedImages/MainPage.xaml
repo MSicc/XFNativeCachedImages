@@ -1,24 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XfNativeCachedImages.MainPage">
+<TabbedPage
+    x:Class="XfNativeCachedImages.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:XfNativeCachedImages"
+    x:DataType="local:MainViewModel">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
 
-</ContentPage>
+    <ContentPage x:Name="SingleImagesTabPage" Title="SingleImages">
+        <StackLayout>
+            <Frame
+                Padding="24"
+                BackgroundColor="#2196F3"
+                CornerRadius="0">
+                <Label
+                    FontSize="36"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Title}"
+                    TextColor="White" />
+            </Frame>
+
+            <Image
+                Margin="4"
+                HeightRequest="100"
+                Source="{Binding Image1Uri}" />
+
+            <Image
+                Margin="4"
+                HeightRequest="100"
+                Source="{Binding Image2Uri}" />
+
+            <Image
+                Margin="4"
+                HeightRequest="100"
+                Source="{local:ImageResource Source=XfNativeCachedImages.Resources.MSicc_Logo_Base_Blue_1024px_pad25.png}" />
+        </StackLayout>
+
+    </ContentPage>
+
+    <ContentPage x:Name="CollectionViewTabpage" Title="CollectionView">
+        <StackLayout>
+            <Frame
+                Padding="24"
+                BackgroundColor="#2196F3"
+                CornerRadius="0">
+                <Label
+                    FontSize="36"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Title}"
+                    TextColor="White" />
+            </Frame>
+
+            <CollectionView ItemsSource="{Binding ImagesFromUrl}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:DataType="local:ImageViewModel">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="12"
+                                Aspect="AspectFill"
+                                Source="{Binding ImageFromUrl}" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="4"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding ImageUrl}"
+                                VerticalTextAlignment="Center" />
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+
+    </ContentPage>
+
+</TabbedPage>

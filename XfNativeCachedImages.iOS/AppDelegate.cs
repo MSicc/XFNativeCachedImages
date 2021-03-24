@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace XfNativeCachedImages.iOS
 {
@@ -25,7 +26,25 @@ namespace XfNativeCachedImages.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            AttachNuke();
+
             return base.FinishedLaunching(app, options);
+        }
+
+        private void AttachNuke()
+        {
+            Xamarin.Forms.Nuke.FormsHandler.Init(true, false);
+
+            //Resource image
+            //Xamarin.Forms.Nuke.FormsHandler.PlaceholderFromResource("CachedImageTest.Resources.MSicc_Logo_Base_Blue_1024px_pad25.png", Assembly.GetAssembly(typeof(MainViewModel)));
+
+            //FontImageSource
+            Xamarin.Forms.Nuke.FormsHandler.PlaceholderFromFontImageSource(new FontImageSource
+            {
+                Glyph = XfNativeCachedImages.Resources.MaterialDesignIcons.ImageBroken,
+                FontFamily = "MaterialDesignIcons",
+                Color = Color.Red
+            });
         }
     }
 }

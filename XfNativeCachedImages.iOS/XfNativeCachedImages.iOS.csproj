@@ -135,5 +135,9 @@
       <Project>{BF9F499A-DACE-4037-A253-9455D505D822}</Project>
       <Name>XfNativeCachedImages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms.Nuke\Xamarin.Forms.Nuke\Xamarin.Forms.Nuke.csproj">
+      <Project>{7CE58FC8-6D94-40B0-AB53-D7873E7954A3}</Project>
+      <Name>Xamarin.Forms.Nuke</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
